@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>gertyn230 | Portfolio</title>
+    <title>DevName | Portfolio</title>
     <style>
         /* Base Styles & Variables */
         :root {
+            /* Dark Theme Defaults */
             --bg-dark: #0A0A12;
             --bg-darker: #07070E;
             --bg-light: #1A1A2E;
@@ -15,12 +16,29 @@
             --text: #E2E2E2;
             --text-secondary: #A0A0A0;
             --card-bg: #10101A;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --border-color: rgba(123, 44, 191, 0.1);
+        }
+
+        /* Light Theme Variables */
+        [data-theme="light"] {
+            --bg-dark: #F5F5F7;
+            --bg-darker: #E5E5EA;
+            --bg-light: #FFFFFF;
+            --accent: #7B2CBF;
+            --accent-light: #9D4EDD;
+            --text: #333333;
+            --text-secondary: #666666;
+            --card-bg: #FFFFFF;
+            --shadow-color: rgba(123, 44, 191, 0.1);
+            --border-color: rgba(0, 0, 0, 0.05);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         body {
@@ -125,8 +143,12 @@
             transition: all 0.3s ease;
         }
 
+        [data-theme="light"] header {
+            background-color: rgba(245, 245, 247, 0.9);
+        }
+
         header.scrolled {
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 20px var(--shadow-color);
         }
 
         nav {
@@ -321,7 +343,7 @@
             border-radius: 20px;
             font-size: 0.9rem;
             color: var(--text);
-            border: 1px solid var(--bg-light);
+            border: 1px solid var(--border-color);
             transition: all 0.3s ease;
         }
 
@@ -345,13 +367,12 @@
             border-radius: 10px;
             overflow: hidden;
             transition: all 0.3s ease;
-            border: 1px solid rgba(123, 44, 191, 0.1);
+            border: 1px solid var(--border-color);
         }
 
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(123, 44, 191, 0.2);
-            border-color: rgba(123, 44, 191, 0.3);
+            box-shadow: 0 10px 30px var(--shadow-color);
         }
 
         .project-img {
@@ -437,13 +458,12 @@
             padding: 30px;
             border-radius: 10px;
             transition: all 0.3s ease;
-            border: 1px solid rgba(123, 44, 191, 0.1);
+            border: 1px solid var(--border-color);
         }
 
         .skill-category:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(123, 44, 191, 0.1);
-            border-color: rgba(123, 44, 191, 0.3);
+            box-shadow: 0 5px 20px var(--shadow-color);
         }
 
         .skill-category h3 {
@@ -541,7 +561,7 @@
             background: var(--card-bg);
             padding: 30px;
             border-radius: 10px;
-            border: 1px solid rgba(123, 44, 191, 0.1);
+            border: 1px solid var(--border-color);
         }
 
         .form-group {
@@ -560,7 +580,7 @@
             width: 100%;
             padding: 12px 15px;
             background: var(--bg-light);
-            border: 1px solid rgba(123, 44, 191, 0.2);
+            border: 1px solid var(--border-color);
             border-radius: 4px;
             color: var(--text);
             font-family: 'Inter', sans-serif;
@@ -637,6 +657,35 @@
         .copyright {
             color: var(--text-secondary);
             font-size: 0.9rem;
+        }
+
+        /* Theme Switcher */
+        .theme-switcher {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            z-index: 1000;
+            border: none;
+            outline: none;
+        }
+
+        .theme-switcher:hover {
+            background: var(--accent-light);
+            transform: scale(1.1);
+        }
+
+        .theme-switcher i {
+            font-size: 1.2rem;
         }
 
         /* Animations */
@@ -768,11 +817,16 @@
     </style>
 </head>
 <body>
+    <!-- Theme Switcher Button -->
+    <button class="theme-switcher" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+    </button>
+
     <!-- Header -->
     <header id="header">
         <div class="container">
             <nav>
-                <a href="#" class="logo">gertyn<span>230</span></a>
+                <a href="#" class="logo">Dev<span>Name</span></a>
                 <ul class="nav-links">
                     <li><a href="#home" class="active">Home</a></li>
                     <li><a href="#about">About</a></li>
@@ -793,7 +847,7 @@
     <section id="home" class="section">
         <div class="container">
             <div class="hero-content">
-                <h1 class="fade-in">Hi, I'm <span>gertyn230</h1>
+                <h1 class="fade-in">Hi, I'm <span>DevName</span></h1>
                 <h1 class="fade-in" style="transition-delay: 0.1s;">A Full-Stack Developer</h1>
                 <p class="fade-in" style="transition-delay: 0.2s;">I build exceptional digital experiences with clean, efficient code. Currently focused on web development and creating impactful solutions.</p>
                 <div class="hero-btns fade-in" style="transition-delay: 0.3s;">
@@ -971,7 +1025,7 @@
                             </div>
                             <div class="contact-text">
                                 <h4>Email</h4>
-                                <a href="mailto:gertn230@gmail.com">gertn230@gmail.com</a>
+                                <a href="mailto:dev@example.com">dev@example.com</a>
                             </div>
                         </div>
                         <div class="contact-item fade-in" style="transition-delay: 0.3s;">
@@ -979,8 +1033,8 @@
                                 <i class="fas fa-phone"></i>
                             </div>
                             <div class="contact-text">
-                                <h4>GitHub</h4>
-                                <a href="https://github.com/gertyn230">https://github.com/gertyn230</a>
+                                <h4>Phone</h4>
+                                <a href="tel:+1234567890">+1 (234) 567-890</a>
                             </div>
                         </div>
                         <div class="contact-item fade-in" style="transition-delay: 0.4s;">
@@ -989,7 +1043,7 @@
                             </div>
                             <div class="contact-text">
                                 <h4>Location</h4>
-                                <p>Cherkassy, UA</p>
+                                <p>San Francisco, CA</p>
                             </div>
                         </div>
                     </div>
@@ -1029,7 +1083,7 @@
                     <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-codepen"></i></a>
                 </div>
-                <p class="copyright">© <span id="year"></span> gertyn230. All rights reserved.</p>
+                <p class="copyright">© <span id="year"></span> DevName. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -1042,6 +1096,38 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Set current year in footer
             document.getElementById('year').textContent = new Date().getFullYear();
+
+            // Theme Switching Functionality
+            const themeSwitcher = document.querySelector('.theme-switcher');
+            const icon = themeSwitcher.querySelector('i');
+            
+            // Check for saved theme preference or use preferred color scheme
+            const savedTheme = localStorage.getItem('theme') || 
+                              (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+            
+            // Apply the saved theme
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+
+            // Toggle theme on button click
+            themeSwitcher.addEventListener('click', function() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeIcon(newTheme);
+            });
+
+            function updateThemeIcon(theme) {
+                if (theme === 'dark') {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                } else {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                }
+            }
 
             // Mobile menu toggle
             const hamburger = document.querySelector('.hamburger');
@@ -1068,75 +1154,4 @@
                 } else {
                     header.classList.remove('scrolled');
                 }
-            });
-
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            // Set active navigation link based on scroll position
-            const sections = document.querySelectorAll('section');
-            window.addEventListener('scroll', function() {
-                let current = '';
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    
-                    if (pageYOffset >= (sectionTop - 100)) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                
-                document.querySelectorAll('.nav-links a').forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${current}`) {
-                        link.classList.add('active');
-                    }
-                });
-            });
-
-            // Form submission
-            const contactForm = document.getElementById('contactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    // Here you would typically send the form data to a server
-                    alert('Thank you for your message! I will get back to you soon.');
-                    this.reset();
-                });
-            }
-
-            // Intersection Observer for scroll animations
-            const fadeElements = document.querySelectorAll('.fade-in');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-            
-            fadeElements.forEach(element => {
-                observer.observe(element);
-            });
-        });
-    </script>
-</body>
-</html>
+           
